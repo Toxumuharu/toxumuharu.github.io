@@ -1,0 +1,39 @@
+
+# Header links
+main:
+  - title: "Tags"
+    url: /tags/
+
+
+# Default sidebar links
+default:
+  - title: "製品ドキュメントへのリンク"
+    children:
+      - title: "App Service"
+        url: "https://docs.microsoft.com/ja-jp/azure/app-service/"
+      - title: "App Service on Linux"
+        url: "https://docs.microsoft.com/ja-jp/azure/app-service/containers/"
+
+  - title: "開発部門による公開情報"
+    children: 
+      - title: "App Service Team Blog"
+        url: "https://azure.github.io/AppService/"
+      - title: "Azure OSS Developer Support"
+        url: "https://azureossd.github.io/"
+
+  - title: "Azure の更新情報"
+    children: 
+      - title: "Azure Blog"
+        url: "https://azure.microsoft.com/blog/"
+      - title: "Azure Updates"
+        url: "https://azure.microsoft.com/updates/"
+
+  - title: "Azure のサポート"
+    children: 
+      - title: "Azure の状態"
+        url: "https://status.azure.com/ja-jp/status"
+      - title: "サポート プランの比較"
+        url: "https://azure.microsoft.com/ja-jp/support/plans/"
+        
+  
+   
