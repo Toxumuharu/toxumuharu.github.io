@@ -1,10 +1,10 @@
 # Toxumuharu Azure Dev Blog
 Toxumuharu が業務内外で覚えた Azure を中心とした技術情報をコッソリまとめる Blog https://toxumuharu.github.io/ のソースです。
 
-## 謝辞
+## Thanks
 Japan PaaS Support Team Blog 様より許可をいただき、テンプレートをパクらせていただきました。本当にありがとうございます。
 
-## Note
+## Note for me
 投稿は `_posts` ディレクトリに `.html` もしくは `.md` 形式のファイルを配置し、`main` ブランチへプッシュを行う。投稿を行うファイルのサンプルは下記を参照。
 
 Title: - <br>
