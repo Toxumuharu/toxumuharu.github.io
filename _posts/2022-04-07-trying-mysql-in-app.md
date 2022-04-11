@@ -19,10 +19,10 @@ MySQL in App Test Web App - [https://toxumuharu-mysql-test-web-app.azurewebsites
 MySQL In App とは、Windows ベースの環境へ Web アプリケーションをデプロイする場合に、アプリケーションのデータベースとして MySQL が追加料金なしで使える App Service の機能です。
 
 Title: Announcing MySQL in-app for Web Apps (Windows)<br>
-URL: https://azure.github.io/AppService/2016/08/18/Announcing-MySQL-in-app-for-Web-Apps-(Windows).html
+URL: [https://azure.github.io/AppService/2016/08/18/Announcing-MySQL-in-app-for-Web-Apps-(Windows).html](https://azure.github.io/AppService/2016/08/18/Announcing-MySQL-in-app-for-Web-Apps-(Windows).html)
 
 ## MySQL in App の注意点
-https://azure.github.io/AppService/2016/08/18/Announcing-MySQL-in-app-for-Web-Apps-(Windows).html にあるプレビュー段階時の Limitations の項目に挙げられている制限事項です。
+[https://azure.github.io/AppService/2016/08/18/Announcing-MySQL-in-app-for-Web-Apps-(Windows).html](https://azure.github.io/AppService/2016/08/18/Announcing-MySQL-in-app-for-Web-Apps-(Windows).html) にあるプレビュー段階時の Limitations の項目に挙げられている制限事項です。
 > Limitations
 > - Auto scale feature is not supported since MySQL currently runs on on a single instance .
 > - Enabling Local cache is not supported.
@@ -231,7 +231,7 @@ Web App へのデプロイは Deployment Center より、GitHub や Azure Repos 
 - Azure App ServiceのMysql In Appが自由でよかったメモ - [https://uzulla.hateblo.jp/entry/2016/09/25/155830](https://uzulla.hateblo.jp/entry/2016/09/25/155830)
 
 # あとがき
-本投稿作成時には、https://docs.microsoft.com/ja-jp/ に情報がまとまっているページが存在しなかったので (Toxumuharu 調べ) 、Azure の公式ブログや個人の方々のブログ等を参考に使用してみました。
+本投稿作成時には、[https://docs.microsoft.com/ja-jp/](https://docs.microsoft.com/ja-jp/) に情報がまとまっているページが存在しなかったので (Toxumuharu 調べ) 、Azure の公式ブログや個人の方々のブログ等を参考に使用してみました。
 
 私自身 Web アプリケーションやデータベースを作成するのは初めてでしたので非常に良い機会でした。データベースを作成したいときは手軽に作成/使用出来るのは良いなと思いました。また何かの機会があれば MySQL in App を使用しようと考えています。
 <br>
