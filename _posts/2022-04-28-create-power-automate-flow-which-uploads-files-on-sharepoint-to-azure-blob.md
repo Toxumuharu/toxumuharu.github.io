@@ -11,6 +11,7 @@ tags:
 <div align="center">
 <img src="/media/20220428/0.png" width="75%">
 </div>
+<br>
 
 # このドキュメントの内容
 Teams のチャットに投稿されたファイルなどが保存されてある SharePoint 上のファイル (https://ORGANIZATIONNAME.sharepoint.com/sites/TEAMNAME/Shared%20Documents/ 以下のファイル) を Azure Blob ストレージへアップロードするフローを作成します。
@@ -75,6 +76,7 @@ TestTeam
 </div>
 
 例として利用するフォルダー階層を担当するフロー毎に枠で囲むと次のようになります。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/24.png)
 
 ちなみに、自分自身を子フローとして実装しようとすると下記のエラーが表示され、フローが正常に保存できないようになっています。
@@ -85,6 +87,7 @@ TestTeam
 
 ## 1. MainFlow (メインフロー)
 フロー名を「MainFlow」、トリガーを「Manually trigger a flow」として作成します。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/4.png)
 
 ### 1.0 下準備
@@ -98,34 +101,34 @@ TestTeam
 - `StorageAccountName`:`StorageAccountName`
 - `ContainerName`:`ContainerName`
 
-
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/9.png)
 
 子フローの作成は以下に詳細がありますのでご参照ください。
 
-
 Title: 子フローの作成<br>
 URL: [https://docs.microsoft.com/ja-jp/power-automate/create-child-flows](https://docs.microsoft.com/ja-jp/power-automate/create-child-flows)
-
-
 
 ### 1.1 変数の初期化 (SharePoint のドキュメント フォルダーの指定、Azure Blob Strage の指定)
 
 [本セクションのフローの内容]
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/5.png)
+
 フローの中で扱う変数として、今回は 4 つの変数を用います。
 
 1. `SiteAddress` (SharePoint サイトのアドレス) - `https://tokawatadev.sharepoint.com/sites/Tokawatadev`
     > `SiteAddress` には Teams のチャンネル内に表示される「Files」タブの項目「Open in SharePoint」より得られる URL のうち、`https://ORGANIZATIONNAME.sharepoint.com/sites/TEAMNAME` までを指定します。
+
     ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/3.png)
 2. `TargetPath` (SharePoint サイト内のファイルパス) - `/Shared Documents`
     > SharePoint 上のフォルダ構造上、SharePoint サイトの `/Shared Documents` で表されるフォルダー パスが Teams の「Files」タブ内とリンクしているため、`/Shared Documents` を `TargetPath` に指定します。。
 3. `StorageAccountName` (Azure Blob ストレージのストレージ アカウント名) - `toxumuharudevblob`
     > アップロード先として指定する Azure Blob ストレージのアカウント名を値として指定します。`toxumuharudevblob` としました。
+
     ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/6.png)
 
 4. `ContainerName` (Azure Blob ストレージのコンテナー名) - `target-container`
     > アップロード先として指定する Azure Blob ストレージのコンテナー名を値として指定します。`target-container` としました。
+
     ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/7.png)
 
 ### 1.2. 指定した SharePoint のフォルダーの一覧を獲得
@@ -173,6 +176,7 @@ URL: [https://docs.microsoft.com/ja-jp/power-automate/create-child-flows#create-
 ここで、SharePoint (というか ASP.NET アプリケーション？) の特性上 `.aspx` という拡張子を持ったファイルが、上記の中で検出されてしまいますが、<font color="Red">これは SharePoint にユーザーがアップロードしたものではないので、無視する処理を加えます。</font>
 
 `IsFolder` が `false` の場合の処理の中に、再度条件分岐を追加します。条件として、「`Id` が文字列 `.aspx` で終わらない」という内容を追加します。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/16.png)
 
 上記の「`Id` が文字列 `.aspx` で終わらない」という条件が true (If yes) の場合に、ファイル コンテンツを獲得し、Blob を作成するアクションを追加します。
@@ -208,11 +212,13 @@ URL: [https://docs.microsoft.com/ja-jp/connectors/sharepointonline/#ファイル
 
 ### 2.2. 変数として指定した SharePoint のフォルダーの一覧を獲得
 セクション 1.2 と同様に以下のように設定します。ここで、`CurrentItem` には MainFlow (または後に作成する SubFlow2) の `body` で表される値 (つまりサブフォルダーのパス) の一つが MainFlow で指定されて渡されてきているいる点に注意します。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/18.png)
 
 ### 2.3. 2.2. で獲得した各ファイルまたはフォルダーに対し、ファイルであれば Azure Blob ストレージへアップロード、フォルダーであればサブフロー 2 を呼び出し
 
 サブフローの呼び出しを SubFlow2 とする以外は MainFlow と全く同じ処理を作成します。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/19.png)
 
 ### 2.4. 呼び出し元 (メインフローまたはサブフロー 2) へ応答
@@ -224,6 +230,7 @@ URL: [https://docs.microsoft.com/ja-jp/connectors/sharepointonline/#ファイル
 SubFlow2 は、SubFlow1 を呼び出す以外、SubFlow1 と内容は全く変わりません。SubFlow1 の作成と同じ手順で SubFlow1 を呼ぶ SubFlow2 を作成します。
 
 なお、フローの作成途中に保存ボタンを押下すると次のようなエラーが発生すると思われます。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/21.png)
 
 これは、子フローのコネクタの利用に際し、誰の接続を使用するか設定されていないという内容のエラーです。フローの詳細画面に戻り、「Run only users」の項目を編集し、自身の接続を選択します。
@@ -235,15 +242,19 @@ SubFlow2 は、SubFlow1 を呼び出す以外、SubFlow1 と内容は全く変�
 
 # 実行と結果
 実行してみます。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/25.png)
 
 初回は次のようなダイアログが出るので、そのまま「Continue」を押下し、実行します。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/26.png)
 
 成功しました。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/27.png)
 
 Azure Blob ストレージ側も見てみます。無事ファイルがアップロードされていました。
+
 ![2022-04-28-create-power-automate-flow-which-uploads-files-on-sharepoint-to-azure-blob](/media/20220428/28.png)
 
 
