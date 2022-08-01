@@ -24,7 +24,7 @@ MS Learn の [コンテナー化されたアプリケーションを Azure Kuber
 
 # あとがき - 結局 Kubernetes とはなんなのか
 この記事を書き終えた後、結局 Kubernetes とはどんなものか？というのを自分なりにまとめてみました。
-- コンテナー技術により実現されたマイクロサービス アーキテクチャによって構成されたアプリケーションを動作させるプラットフォーム。このプラットフォームの実態は複数の仮想マシンで構成されたコンピューティング リソース郡であり、Kuberenets はそれら仮想マシンを一つの大きなコンテナーが動作するシステムとして。
+- コンテナー技術により実現されるマイクロサービス アーキテクチャによって構成されたアプリケーションを動作させるプラットフォーム。このプラットフォームの実態は複数の仮想マシンで構成されたコンピューティング リソース郡であり、Kuberenets はそれら仮想マシンを、コンテナーが動作する一つの大きなシステムのようなコンピューティング リソースとして扱えるようにしてくれる。
 - アプリケーションの負荷に応じて自動または手動でコンテナー レベルやコンテナーをホストする仮想マシン レベルでスケール アウト/インを行なってくれる。
 
 # Kubernetes クラスター
@@ -337,13 +337,12 @@ Ingressは任意のポートやプロトコルを公開しません。HTTPやHTT
 また、URL レベルで負荷分散が可能であるため、OSI 参照モデルで言うところのレイヤー 7 で動作する L7 ロードバランサーの役割を果たす事が分かります。
 
 # 参考文献
-- [https://docs.microsoft.com/ja-jp/learn/modules/aks-deploy-container-app/](https://docs.microsoft.com/ja-jp/learn/modules/aks-deploy-container-app/)
-- [https://kubernetes.io/ja/docs/concepts/overview/components/](https://kubernetes.io/ja/docs/concepts/overview/components/)
-- [https://kubernetes.io/ja/docs/reference/glossary/?all=true#term-control-plane](https://kubernetes.io/ja/docs/reference/glossary/?all=true#term-control-plane)
-- [https://www.redhat.com/ja/topics/automation/what-is-orchestration](https://www.redhat.com/ja/topics/automation/what-is-orchestration)
-- [https://kubernetes.io/ja/docs/concepts/overview/components/#etcd](https://kubernetes.io/ja/docs/concepts/overview/components/#etcd)
+- [コンテナー化されたアプリケーションを Azure Kubernetes Service にデプロイする](https://docs.microsoft.com/ja-jp/learn/modules/aks-deploy-container-app/)
+- [Kubernetesとは何か？](https://kubernetes.io/ja/docs/concepts/overview/what-is-kubernetes/)
+- [Kubernetesのコンポーネント](https://kubernetes.io/ja/docs/concepts/overview/components/)
+- [オーケストレーションとは](https://www.redhat.com/ja/topics/automation/what-is-orchestration)
+- [高可用性トポロジーのためのオプション](https://kubernetes.io/ja/docs/setup/production-environment/tools/kubeadm/ha-topology/)
 
-# あとがき
 
 <br>
 
