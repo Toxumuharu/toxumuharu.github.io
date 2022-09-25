@@ -11,7 +11,7 @@ tags:
 # このドキュメントの内容
 Azure App Service の MySQL In App をデータベースとして使用する事を目的としてアプリケーションを作成します。例として、MySQL in App を使用したアクセスされた回数を表示するだけの簡単な Web アプリケーションをデプロイします。
 
-MySQL in App Test Web App - [https://toxumuharu-mysql-test-web-app.azurewebsites.net/](https://toxumuharu-mysql-test-web-app.azurewebsites.net/)
+MySQL in App Test Web App - [https://toxumuharumysqlinapptestwebapp.azurewebsites.net/](https://toxumuharumysqlinapptestwebapp.azurewebsites.net/)
 
 ![2022-04-07-trying-mysql-in-app](/media/20220407/16.png)
 
