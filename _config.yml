@@ -1,43 +1,34 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
 title: Tomoharu Kawata
-email: tomoharu.kawata@outlook.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-lang: "ja"
-url: "http://localhost:4000" # the base hostname & protocol for your site
-twitter_username: HaruShoots
-github_username: toxumuharu
-disqus_username:
+description: 'Business Card Page'
+url: 'https://toxumuharu.github.io/'
+baseurl: ''
+profilepic: '/images/tokawata.jpg'
+bkimage: '/images/bk1.jpg'
+# google_analytics: UA-XXXXXX-X
+font_awesome: 'ab4d10fbaa.js'
+
+author:
+  name: 'Tomoharu Kawata'
+  # email: thomas@zuehlke.cloud
+  # mastodon: tzuehlke@mstdn.social
+  # twitter_username: thomzuehlke
+  # facebook_username: joshgerdes
+  github_username:  toxumuharu
+  linkedin_username:  tomoharu-kawata-44670b15b
+  # meetup_name: Azure-Meetup-Rostock-MV
 
 # Build settings
+destination: _site
 markdown: kramdown
-permalink: /:categories/:title/
-
-# Posts settings
-future: true
-safe: false
-lsi: false
-excerpt_separator: "\n\n"
-
-# Theme settings
-compress_html:
-  comments: ["<!-- ", " -->"]
-  clippings: all
-  endings: all
-
+highlighter: rouge
 
 sass:
-  style: compressed
+    sass_dir: _sass
+    style: compressed
 
-
-images: '/assets/images'
+kramdown:
+  # use Github Flavored Markdown
+  input: GFM
+  # do not replace newlines by <br>s
+  hard_wrap: false
